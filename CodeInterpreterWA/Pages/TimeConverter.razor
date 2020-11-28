@@ -1,0 +1,28 @@
+﻿<div class="form-group">
+    <div class="col-md-4">
+        <div class="form-group">
+            <label>Hours</label>
+            <input type="number" class="form-control" placeholder="Hours....." @bind="Hours"/>
+        </div>
+        <button class="btn btn-primary" @onclick="ConvertTime">
+            <span class="oi oi-clock"></span> Converts
+        </button>
+    </div>
+
+    @if(_seconds != null)
+    {
+        <div class="row blockquote mt-5">
+            <span>In @Hours hours we have @_seconds seconds.  </span>
+        </div>
+    }
+
+</div>
+@code {
+    int? _seconds = null;
+    public int? Hours { get; set; }
+
+    private void ConvertTime()
+    {
+        _seconds = Hours * 3600;
+    }
+}

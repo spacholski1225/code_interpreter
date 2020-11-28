@@ -1,0 +1,36 @@
+﻿<div class="form-group">
+    <div class="col-md-4">
+        <div class="form-group">
+            <label>Meters</label>
+            <input type="number" class="form-control" placeholder="Meters....." @bind="Meters" @bind:event="oninput"/>
+        </div>
+    </div>
+    @if(_inches != null)
+    {
+        <div class="row blockquote mt-5">
+            <span>@Meters m equal to @_inches inches.  </span>
+        </div>
+    }
+</div> 
+<h3>DistanceConverter</h3>
+
+@code {
+    double? _inches = null;
+    double? _meters = null;
+    public double? Meters
+    {
+
+        get => _meters;
+
+        set
+        {
+            _meters = value;
+            ConvertDistance();
+        }
+    }
+    private void ConvertDistance()
+    {
+        _inches = _meters / 0.0254d;
+    }
+
+}
